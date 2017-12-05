@@ -10,7 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::post('contact-me', ['as'=>'ContactMe','uses'=>'ContactMeController@SendEmail']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('body');
 });
+
+
+Route::any('{catchall}', function() {
+    return view('body');
+})->where('catchall', '.*');
